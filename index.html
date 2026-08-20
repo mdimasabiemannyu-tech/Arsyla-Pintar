@@ -1,1 +1,266 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Petualangan Pintar Anak</title><style>body{margin:0;font-family:Arial;background:linear-gradient(135deg,#8ed6ff,#ffe58f);min-height:100vh;text-align:center;color:#25324a}.app{max-width:850px;margin:auto;padding:20px}.box{background:white;border-radius:28px;padding:24px;box-shadow:0 12px 35px #0002;margin-top:20px}h1{font-size:clamp(30px,7vw,55px);margin:8px}button{border:0;border-radius:18px;padding:16px 22px;margin:8px;font-size:20px;font-weight:bold;cursor:pointer}.cat{min-width:180px;background:#f0f4ff}#question{font-size:110px;font-weight:900;min-height:150px;display:flex;align-items:center;justify-content:center}#image{font-size:125px;min-height:145px;display:flex;align-items:center;justify-content:center}.mic{background:#ff6b6b;color:white}.next{background:#58d39a}.back{background:#7785ff;color:white}.score{font-size:22px;font-weight:bold}#status{font-size:24px;font-weight:bold;min-height:38px}.hidden{display:none}.small{font-size:14px;color:#667}</style></head><body><div class="app"><h1>🌟 Petualangan Pintar Anak 🌟</h1><p>Lihat, dengarkan, lalu <b>katakan jawabannya!</b> 🎤</p><div id="menu" class="box"><h2>Pilih Permainan</h2><button class="cat" onclick="start('angka')">🔢 Angka</button><button class="cat" onclick="start('huruf')">🔤 Huruf</button><button class="cat" onclick="start('buah')">🍎 Buah</button><button class="cat" onclick="start('hewan')">🐶 Hewan</button><p class="small">Gunakan Chrome/Edge dan izinkan mikrofon.</p></div><div id="game" class="box hidden"><div class="score">⭐ Skor: <span id="score">0</span> | Soal: <span id="num">1</span></div><div id="question"></div><div id="image"></div><div id="status">Katakan jawabanmu...</div><button class="mic" onclick="listen()">🎤 Jawab Sekarang</button><button class="next" onclick="nextQuestion()">➡️ Soal Berikutnya</button><button class="back" onclick="goMenu()">🏠 Menu</button></div></div><script>const data={angka:[['1','Satu'],['2','Dua'],['3','Tiga'],['4','Empat'],['5','Lima'],['6','Enam'],['7','Tujuh'],['8','Delapan'],['9','Sembilan'],['10','Sepuluh']],huruf:[['A','A'],['B','B'],['C','C'],['D','D'],['E','E'],['F','F'],['G','G'],['H','H'],['I','I'],['J','J']],buah:[['🍎','Apel'],['🍌','Pisang'],['🍊','Jeruk'],['🍉','Semangka'],['🍇','Anggur'],['🥭','Mangga'],['🍍','Nanas'],['🍓','Stroberi'],['🥥','Kelapa'],['🍐','Pir']],hewan:[['🐱','Kucing'],['🐶','Anjing'],['🐘','Gajah'],['🐯','Harimau'],['🦁','Singa'],['🐮','Sapi'],['🐔','Ayam'],['🐟','Ikan'],['🐰','Kelinci'],['🐒','Monyet']]};let cat='',items=[],i=0,score=0,n=1;const $=x=>document.getElementById(x),norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');function start(c){cat=c;items=[...data[c]].sort(()=>Math.random()-.5);i=0;score=0;n=1;$('menu').classList.add('hidden');$('game').classList.remove('hidden');show()}function show(){let x=items[i];$('score').textContent=score;$('num').textContent=n;$('question').textContent=cat==='angka'||cat==='huruf'?x[0]:'';$('image').textContent=cat==='buah'||cat==='hewan'?x[0]:'';$('status').textContent='Katakan jawabanmu...'}function listen(){if(!('webkitSpeechRecognition'in window||'SpeechRecognition'in window)){ $('status').textContent='Browser belum mendukung mikrofon. Gunakan Chrome/Edge.';return}let R=window.SpeechRecognition||window.webkitSpeechRecognition,r=new R();r.lang='id-ID';r.interimResults=false;r.maxAlternatives=3;$('status').textContent='🎧 Mendengarkan...';r.onresult=e=>{let heard=e.results[0][0].transcript,target=items[i][1],ok=norm(heard).includes(norm(target));if(ok){score+=10;$('status').textContent='🎉 Hebat! Benar!';speak('Hebat! Jawaban kamu benar!')}else{$('status').textContent='😊 Coba lagi ya!';speak('Coba lagi ya')}};r.onerror=()=>{$('status').textContent='🎤 Mikrofon tidak terdengar. Tekan lagi.'};r.start()}function speak(t){if(speechSynthesis){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang='id-ID';speechSynthesis.speak(u)}}function nextQuestion(){i=(i+1)%items.length;n++;show()}function goMenu(){$('game').classList.add('hidden');$('menu').classList.remove('hidden')}</script></body></html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Edukasi Arsyla Pintar</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #a8edf7 0%, #fed6e3 100%);
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      padding: 20px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      color: #ff4757;
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .kids-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .kid-avatar {
+      width: 110px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 4px solid #ffa502;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .speech-bubble {
+      background: #eccc68;
+      color: #2f3542;
+      padding: 12px;
+      border-radius: 15px;
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .audio-btn {
+      background: #ff4757;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+
+    .apples-area {
+      background: #f1f2f6;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      min-height: 100px;
+      margin-bottom: 20px;
+    }
+
+    .apple {
+      font-size: 42px;
+      animation: pop 0.3s ease-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .opt-btn {
+      background: #2ed573;
+      color: white;
+      border: none;
+      border-radius: 16px;
+      padding: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #26af5f;
+      transition: all 0.1s;
+    }
+
+    .opt-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 0 #26af5f;
+    }
+
+    .score-board {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #57606f;
+    }
+
+    .message {
+      height: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Arsyla Pintar Belajar Berhitung</h1>
+
+    <!-- Karakter 2 Anak -->
+    <div class="kids-container">
+      <img src="https://lh3.googleusercontent.com/pw/AP1GczNzr0l9A29K13R7Uj4uM2P6pTj_g8Bv12-2n-image_4" alt="Karakter Anak" class="kid-avatar" id="kidImage">
+    </div>
+
+    <!-- Bubble Soal & Tombol Suara -->
+    <div class="speech-bubble">
+      <span id="questionText">Berapakah jumlah apel ini?</span>
+      <button class="audio-btn" onclick="bacaSoal()">🔊</button>
+    </div>
+
+    <!-- Area Buah Apel -->
+    <div class="apples-area" id="applesArea"></div>
+
+    <!-- Pilihan A, B, C, D -->
+    <div class="options-grid">
+      <button class="opt-btn" onclick="cekJawaban(0)" id="btnA">A. 1</button>
+      <button class="opt-btn" onclick="cekJawaban(1)" id="btnB">B. 2</button>
+      <button class="opt-btn" onclick="cekJawaban(2)" id="btnC">C. 3</button>
+      <button class="opt-btn" onclick="cekJawaban(3)" id="btnD">D. 4</button>
+    </div>
+
+    <div class="message" id="message"></div>
+    <div class="score-board">Skor: <span id="score">0</span></div>
+  </div>
+
+  <script>
+    let jumlahApel = 0;
+    let jawabanBenarIndex = 0;
+    let skor = 0;
+
+    // Fungsi Suara (Text-To-Speech)
+    function bicara(teks) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(teks);
+        utterance.lang = 'id-ID';
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    function bacaSoal() {
+      bicara("Berapakah jumlah apel ini?");
+    }
+
+    // Generator Soal Baru
+    function buatSoal() {
+      document.getElementById('message').innerText = "";
+      
+      // Pilih jumlah apel random 1 - 8
+      jumlahApel = Math.floor(Math.random() * 8) + 1;
+
+      // Tampilkan Apel
+      const applesArea = document.getElementById('applesArea');
+      applesArea.innerHTML = "";
+      for (let i = 0; i < jumlahApel; i++) {
+        const span = document.createElement('span');
+        span.className = 'apple';
+        span.innerText = '🍎';
+        applesArea.appendChild(span);
+      }
+
+      // Buat Pilihan A, B, C, D
+      jawabanBenarIndex = Math.floor(Math.random() * 4);
+      let pilihan = [];
+
+      while (pilihan.length < 4) {
+        let angkaRandom = Math.floor(Math.random() * 8) + 1;
+        if (angkaRandom !== jumlahApel && !pilihan.includes(angkaRandom)) {
+          pilihan.push(angkaRandom);
+        }
+      }
+
+      // Masukkan jawaban benar di posisi acak
+      pilihan.splice(jawabanBenarIndex, 0, jumlahApel);
+
+      // Set teks tombol
+      const label = ['A', 'B', 'C', 'D'];
+      for (let i = 0; i < 4; i++) {
+        document.getElementById(`btn${label[i]}`).innerText = `${label[i]}. ${pilihan[i]}`;
+        document.getElementById(`btn${label[i]}`).dataset.value = pilihan[i];
+      }
+
+      // Bacakan Soal Otomatis
+      setTimeout(() => {
+        bacaSoal();
+      }, 500);
+    }
+
+    // Cek Jawaban
+    function cekJawaban(index) {
+      const label = ['A', 'B', 'C', 'D'];
+      const tombol = document.getElementById(`btn${label[index]}`);
+      const nilaiDipilih = parseInt(tombol.dataset.value);
+
+      if (nilaiDipilih === jumlahApel) {
+        skor += 10;
+        document.getElementById('score').innerText = skor;
+        document.getElementById('message').style.color = '#2ed573';
+        document.getElementById('message').innerText = "Hore! Jawaban Benar! 🎉";
+        bicara("Hore! Jawabannya benar!");
+        
+        setTimeout(() => {
+          buatSoal();
+        }, 2000);
+      } else {
+        document.getElementById('message').style.color = '#ff4757';
+        document.getElementById('message').innerText = "Tetot! Coba lagi ya! ❌";
+        bicara("Tetot! Coba lagi ya!");
+      }
+    }
+
+    // Mulai Game Pertama Kali
+    window.onload = function() {
+      buatSoal();
+    };
+  </script>
+</body>
+</html>
