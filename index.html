@@ -3,197 +3,151 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#6c63ff">
 <title>Arsyla Pintar 🌟</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:linear-gradient(135deg,#79d9ff,#ffe58a);
+ min-height:100vh;
+ color:#26324a;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #74d8ff, #ffe58a);
-  min-height: 100vh;
-  color: #26324a;
+.container{
+ max-width:700px;
+ margin:auto;
+ padding:18px;
+ text-align:center;
 }
 
-.container {
-  max-width: 700px;
-  margin: auto;
-  padding: 18px;
-  text-align: center;
+.logo{
+ font-size:42px;
+ font-weight:900;
+ margin:8px 0;
 }
 
-.logo {
-  font-size: 42px;
-  font-weight: 900;
-  margin: 10px 0 3px;
+.subtitle{
+ font-size:18px;
+ font-weight:bold;
 }
 
-.subtitle {
-  font-size: 18px;
-  font-weight: bold;
+.card{
+ background:white;
+ border-radius:28px;
+ padding:22px;
+ margin-top:20px;
+ box-shadow:0 12px 30px #0002;
 }
 
-.card {
-  background: white;
-  border-radius: 28px;
-  padding: 22px;
-  margin-top: 20px;
-  box-shadow: 0 12px 30px rgba(0,0,0,.15);
+.menu button{
+ width:100%;
+ border:0;
+ border-radius:20px;
+ padding:20px;
+ margin:9px 0;
+ font-size:23px;
+ font-weight:bold;
 }
 
-h2 {
-  margin-top: 5px;
+.angka{background:#ffe082}
+.buah{background:#ffb7b7}
+.hewan{background:#c7c8ff}
+.pintar{background:#b8f2c8}
+
+.hidden{display:none}
+
+.score{
+ font-size:20px;
+ font-weight:bold;
 }
 
-.menu button {
-  display: block;
-  width: 100%;
-  margin: 12px 0;
-  padding: 18px;
-  border: 0;
-  border-radius: 20px;
-  font-size: 22px;
-  font-weight: bold;
-  cursor: pointer;
-  background: #f1f4ff;
-  box-shadow: 0 5px 0 rgba(0,0,0,.08);
+.question{
+ font-size:25px;
+ font-weight:bold;
+ margin:18px 0 5px;
 }
 
-.menu button:active {
-  transform: translateY(4px);
-  box-shadow: none;
+.speaker{
+ font-size:55px;
+ margin:8px;
 }
 
-.angka {
-  background: #ffe082 !important;
+.visual{
+ min-height:150px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ flex-wrap:wrap;
+ gap:5px;
+ font-size:80px;
+ padding:10px;
 }
 
-.huruf {
-  background: #b8f2c8 !important;
+.countItem{
+ font-size:58px;
 }
 
-.buah {
-  background: #ffb7b7 !important;
+.answers{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:14px;
+ margin-top:12px;
 }
 
-.hewan {
-  background: #c5c6ff !important;
+.answer{
+ border:0;
+ border-radius:22px;
+ background:#f1f4ff;
+ padding:18px 8px;
+ min-height:125px;
+ font-size:65px;
+ box-shadow:0 5px 0 #0002;
 }
 
-.score {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 15px;
+.answer:active{
+ transform:translateY(4px);
+ box-shadow:none;
 }
 
-.question {
-  font-size: 26px;
-  font-weight: bold;
-  margin: 10px 0;
+.message{
+ min-height:55px;
+ margin-top:16px;
+ font-size:25px;
+ font-weight:900;
 }
 
-.visual {
-  min-height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 105px;
-  flex-wrap: wrap;
-  gap: 5px;
-  padding: 10px;
+.correct{color:#13a15c}
+.wrong{color:#e65353}
+
+.next,.home{
+ width:100%;
+ border:0;
+ border-radius:18px;
+ padding:16px;
+ margin-top:12px;
+ font-size:20px;
+ font-weight:bold;
 }
 
-.number-big {
-  font-size: 120px;
-  font-weight: 900;
+.next{background:#59d99a}
+.home{background:#777fff;color:white}
+
+.listen{
+ border:0;
+ border-radius:18px;
+ padding:14px 22px;
+ background:#ff7777;
+ color:white;
+ font-size:20px;
+ font-weight:bold;
 }
 
-.letter-big {
-  font-size: 120px;
-  font-weight: 900;
-}
-
-.answers {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 15px;
-}
-
-.answer {
-  border: 0;
-  border-radius: 18px;
-  padding: 18px 10px;
-  font-size: 24px;
-  font-weight: bold;
-  background: #eef2ff;
-  cursor: pointer;
-  box-shadow: 0 5px 0 rgba(0,0,0,.08);
-}
-
-.answer:active {
-  transform: translateY(4px);
-  box-shadow: none;
-}
-
-.message {
-  min-height: 50px;
-  margin: 15px 0 5px;
-  font-size: 25px;
-  font-weight: 900;
-}
-
-.correct {
-  color: #16a05d;
-}
-
-.wrong {
-  color: #e55353;
-}
-
-.next {
-  width: 100%;
-  border: 0;
-  border-radius: 18px;
-  padding: 16px;
-  margin-top: 15px;
-  font-size: 21px;
-  font-weight: bold;
-  background: #59d99a;
-  cursor: pointer;
-}
-
-.home {
-  width: 100%;
-  border: 0;
-  border-radius: 18px;
-  padding: 14px;
-  margin-top: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  background: #7b82ff;
-  color: white;
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
-}
-
-.stars {
-  font-size: 30px;
-  letter-spacing: 5px;
-}
-
-.footer {
-  margin-top: 20px;
-  font-size: 14px;
-  opacity: .7;
+.stars{
+ font-size:30px;
+ margin:8px;
 }
 </style>
 </head>
@@ -202,377 +156,416 @@ h2 {
 
 <div class="container">
 
-  <div class="logo">🌟 ARSYLA PINTAR 🌟</div>
-  <div class="subtitle">Belajar • Bermain • Berani Menjawab</div>
+<div class="logo">🌟 ARSYLA PINTAR 🌟</div>
+<div class="subtitle">Belajar • Bermain • Berani Menjawab</div>
 
-  <!-- MENU -->
-  <div id="menu" class="card menu">
+<!-- MENU -->
+<div id="menu" class="card">
 
-    <h2>🎮 Pilih Permainan</h2>
+<h2>🎮 Pilih Permainan</h2>
 
-    <button class="angka" onclick="mulai('angka')">
-      🔢 Belajar Angka
-    </button>
+<button class="angka" onclick="mulai('angka')">
+🔢 Angka
+</button>
 
-    <button class="huruf" onclick="mulai('huruf')">
-      🔤 Belajar Huruf
-    </button>
+<button class="buah" onclick="mulai('buah')">
+🍎 Buah & Makanan
+</button>
 
-    <button class="buah" onclick="mulai('buah')">
-      🍎 Belajar Buah
-    </button>
+<button class="hewan" onclick="mulai('hewan')">
+🐯 Hewan
+</button>
 
-    <button class="hewan" onclick="mulai('hewan')">
-      🐯 Belajar Hewan
-    </button>
+<button class="pintar" onclick="mulai('pintar')">
+🧠 Anak Pintar
+</button>
 
-  </div>
+</div>
 
 
-  <!-- GAME -->
-  <div id="game" class="card hidden">
+<!-- GAME -->
+<div id="game" class="card hidden">
 
-    <div class="score">
-      ⭐ Skor: <span id="score">0</span>
-      &nbsp;&nbsp;
-      📖 Soal: <span id="nomor">1</span>/10
-    </div>
+<div class="score">
+⭐ Skor: <span id="score">0</span>
+&nbsp;&nbsp;
+📖 <span id="nomor">1</span>/10
+</div>
 
-    <div class="stars" id="stars">☆☆☆☆☆</div>
+<div class="stars" id="stars">☆☆☆☆☆</div>
 
-    <div id="question" class="question"></div>
+<div class="speaker">🔊</div>
 
-    <div id="visual" class="visual"></div>
+<div id="question" class="question"></div>
 
-    <div id="answers" class="answers"></div>
+<div id="visual" class="visual"></div>
 
-    <div id="message" class="message"></div>
+<button class="listen" onclick="bacakanSoal()">
+🔊 Dengarkan Soal
+</button>
 
-    <button id="nextButton" class="next hidden" onclick="soalBerikutnya()">
-      ➡️ Soal Berikutnya
-    </button>
+<div id="answers" class="answers"></div>
 
-    <button class="home" onclick="kembaliMenu()">
-      🏠 Kembali ke Menu
-    </button>
+<div id="message" class="message"></div>
 
-  </div>
+<button id="next" class="next hidden" onclick="berikutnya()">
+➡️ Soal Berikutnya
+</button>
 
-  <div class="footer">
-    🌈 Arsyla Pintar — Belajar sambil bermain
-  </div>
+<button class="home" onclick="menuUtama()">
+🏠 Menu Utama
+</button>
+
+</div>
 
 </div>
 
 
 <script>
 
-const data = {
+const data={
 
-  angka: [
-    ["1","Satu"],
-    ["2","Dua"],
-    ["3","Tiga"],
-    ["4","Empat"],
-    ["5","Lima"],
-    ["6","Enam"],
-    ["7","Tujuh"],
-    ["8","Delapan"],
-    ["9","Sembilan"],
-    ["10","Sepuluh"]
-  ],
+angka:[
+{
+ q:"Ada berapa apel?",
+ visual:["🍎","🍎","🍎"],
+ a:["🍎","🍎🍎","🍎🍎🍎","🍎🍎🍎🍎"],
+ benar:2
+},
+{
+ q:"Ada berapa pisang?",
+ visual:["🍌","🍌"],
+ a:["🍌","🍌🍌","🍌🍌🍌","🍌🍌🍌🍌"],
+ benar:1
+},
+{
+ q:"Ada berapa jeruk?",
+ visual:["🍊","🍊","🍊","🍊"],
+ a:["🍊","🍊🍊","🍊🍊🍊","🍊🍊🍊🍊"],
+ benar:3
+},
+{
+ q:"Ada berapa apel?",
+ visual:["🍎","🍎","🍎","🍎","🍎"],
+ a:["🍎","🍎🍎","🍎🍎🍎","🍎🍎🍎🍎🍎"],
+ benar:3
+}
+],
 
-  huruf: [
-    ["A","A"],
-    ["B","B"],
-    ["C","C"],
-    ["D","D"],
-    ["E","E"],
-    ["F","F"],
-    ["G","G"],
-    ["H","H"],
-    ["I","I"],
-    ["J","J"]
-  ],
+buah:[
+{
+ q:"Buah apakah ini?",
+ visual:["🍎"],
+ a:["🍎","🍌","🍊","🍉"],
+ benar:0
+},
+{
+ q:"Buah apakah ini?",
+ visual:["🍌"],
+ a:["🍎","🍌","🍇","🍉"],
+ benar:1
+},
+{
+ q:"Buah apakah ini?",
+ visual:["🍉"],
+ a:["🍊","🍎","🍉","🍌"],
+ benar:2
+},
+{
+ q:"Kucing makan apa?",
+ visual:["🐱"],
+ a:["🍎","🥕","🐟","🍉"],
+ benar:2
+}
+],
 
-  buah: [
-    ["🍎","Apel"],
-    ["🍌","Pisang"],
-    ["🍊","Jeruk"],
-    ["🍉","Semangka"],
-    ["🍇","Anggur"],
-    ["🥭","Mangga"],
-    ["🍍","Nanas"],
-    ["🍓","Stroberi"],
-    ["🥥","Kelapa"],
-    ["🍐","Pir"]
-  ],
+hewan:[
+{
+ q:"Hewan apakah ini?",
+ visual:["🐱"],
+ a:["🐱","🐶","🐰","🐮"],
+ benar:0
+},
+{
+ q:"Hewan apakah ini?",
+ visual:["🐶"],
+ a:["🐱","🐘","🐶","🦁"],
+ benar:2
+},
+{
+ q:"Hewan apakah ini?",
+ visual:["🦁"],
+ a:["🐯","🐱","🐶","🦁"],
+ benar:3
+},
+{
+ q:"Hewan apakah ini?",
+ visual:["🐘"],
+ a:["🐘","🐰","🐔","🐟"],
+ benar:0
+}
+],
 
-  hewan: [
-    ["🐱","Kucing"],
-    ["🐶","Anjing"],
-    ["🐘","Gajah"],
-    ["🦁","Singa"],
-    ["🐯","Harimau"],
-    ["🐮","Sapi"],
-    ["🐔","Ayam"],
-    ["🐟","Ikan"],
-    ["🐰","Kelinci"],
-    ["🐒","Monyet"]
-  ]
+pintar:[
+{
+ q:"Sikat gigi digunakan untuk apa?",
+ visual:["🪥"],
+ a:["🛏️","🪥","⚽","🍚"],
+ benar:1
+},
+{
+ q:"Mata digunakan untuk apa?",
+ visual:["👀"],
+ a:["👀","👂","👃","🦷"],
+ benar:0
+},
+{
+ q:"Telinga digunakan untuk apa?",
+ visual:["👂"],
+ a:["👀","👂","👄","👃"],
+ benar:1
+},
+{
+ q:"Payung digunakan saat apa?",
+ visual:["☂️"],
+ a:["☀️","🌧️","🍎","⚽"],
+ benar:1
+},
+{
+ q:"Sepatu dipakai untuk apa?",
+ visual:["👟"],
+ a:["🏃","😴","🍴","🛁"],
+ benar:0
+}
+]
 
 };
 
 
-let kategori = "";
-let soal = [];
-let posisi = 0;
-let skor = 0;
-let sudahMenjawab = false;
+let kategori="";
+let soal=[];
+let posisi=0;
+let skor=0;
+let sudah=false;
 
 
-function acak(array) {
+function acak(arr){
+ return [...arr].sort(()=>Math.random()-0.5);
+}
 
-  return [...array].sort(() => Math.random() - 0.5);
+
+function mulai(kat){
+
+ kategori=kat;
+
+ soal=acak(data[kat]);
+
+ while(soal.length<10){
+   soal=soal.concat(acak(data[kat]));
+ }
+
+ soal=soal.slice(0,10);
+
+ posisi=0;
+ skor=0;
+
+ document.getElementById("menu").classList.add("hidden");
+ document.getElementById("game").classList.remove("hidden");
+
+ tampilkan();
+}
+
+
+function tampilkan(){
+
+ sudah=false;
+
+ const s=soal[posisi];
+
+ document.getElementById("score").textContent=skor;
+ document.getElementById("nomor").textContent=posisi+1;
+
+ document.getElementById("question").textContent=s.q;
+
+ document.getElementById("visual").innerHTML=
+   s.visual.map(x=>`<span class="countItem">${x}</span>`).join("");
+
+ document.getElementById("message").textContent="";
+ document.getElementById("message").className="message";
+
+ document.getElementById("next").classList.add("hidden");
+
+ const answers=document.getElementById("answers");
+
+ answers.innerHTML="";
+
+ let pilihan=s.a.map((gambar,index)=>({
+   gambar,
+   benar:index===s.benar
+ }));
+
+ pilihan=acak(pilihan);
+
+ pilihan.forEach(p=>{
+
+   const b=document.createElement("button");
+
+   b.className="answer";
+
+   b.textContent=p.gambar;
+
+   b.onclick=()=>jawab(p.benar);
+
+   answers.appendChild(b);
+
+ });
+
+ setTimeout(bacakanSoal,500);
 
 }
 
 
-function mulai(kat) {
+function bacakanSoal(){
 
-  kategori = kat;
+ const teks=soal[posisi].q;
 
-  soal = acak(data[kat]);
+ if("speechSynthesis" in window){
 
-  posisi = 0;
+   speechSynthesis.cancel();
 
-  skor = 0;
+   const suara=new SpeechSynthesisUtterance(teks);
 
-  document.getElementById("menu").classList.add("hidden");
+   suara.lang="id-ID";
+   suara.rate=0.85;
+   suara.pitch=1.15;
 
-  document.getElementById("game").classList.remove("hidden");
+   speechSynthesis.speak(suara);
 
-  tampilkanSoal();
-
-}
-
-
-function tampilkanSoal() {
-
-  sudahMenjawab = false;
-
-  const item = soal[posisi];
-
-  const question = document.getElementById("question");
-
-  const visual = document.getElementById("visual");
-
-  const answers = document.getElementById("answers");
-
-  const message = document.getElementById("message");
-
-  const nextButton = document.getElementById("nextButton");
-
-
-  question.textContent = "";
-
-  visual.innerHTML = "";
-
-  answers.innerHTML = "";
-
-  message.textContent = "";
-
-  message.className = "message";
-
-  nextButton.classList.add("hidden");
-
-
-  document.getElementById("score").textContent = skor;
-
-  document.getElementById("nomor").textContent = posisi + 1;
-
-
-  if (kategori === "angka") {
-
-    question.textContent = "🔢 Angka berapakah ini?";
-
-    visual.innerHTML =
-      `<div class="number-big">${item[0]}</div>`;
-
-  }
-
-  else if (kategori === "huruf") {
-
-    question.textContent = "🔤 Huruf apakah ini?";
-
-    visual.innerHTML =
-      `<div class="letter-big">${item[0]}</div>`;
-
-  }
-
-  else if (kategori === "buah") {
-
-    question.textContent = "🍎 Buah apakah ini?";
-
-    visual.textContent = item[0];
-
-  }
-
-  else if (kategori === "hewan") {
-
-    question.textContent = "🐯 Hewan apakah ini?";
-
-    visual.textContent = item[0];
-
-  }
-
-
-  let pilihan = [item[1]];
-
-
-  while (pilihan.length < 4) {
-
-    const acakItem =
-      data[kategori][
-        Math.floor(Math.random() * data[kategori].length)
-      ][1];
-
-    if (!pilihan.includes(acakItem)) {
-
-      pilihan.push(acakItem);
-
-    }
-
-  }
-
-
-  pilihan = acak(pilihan);
-
-
-  pilihan.forEach(jawaban => {
-
-    const button = document.createElement("button");
-
-    button.className = "answer";
-
-    button.textContent = jawaban;
-
-    button.onclick = () => cekJawaban(jawaban);
-
-    answers.appendChild(button);
-
-  });
+ }
 
 }
 
 
-function cekJawaban(jawaban) {
+function jawab(benar){
 
-  if (sudahMenjawab) return;
+ if(sudah)return;
 
-  sudahMenjawab = true;
+ sudah=true;
 
-  const benar = soal[posisi][1];
+ const msg=document.getElementById("message");
 
-  const message = document.getElementById("message");
+ if(benar){
 
-  const nextButton = document.getElementById("nextButton");
+   skor+=10;
 
+   msg.innerHTML="🎉 Hebat! Anak Pintar! ⭐";
 
-  if (jawaban === benar) {
+   msg.className="message correct";
 
-    skor += 10;
+   suara("Hebat! Anak Pintar!");
 
-    message.innerHTML =
-      "🎉 Hebat! Anak Pintar! ⭐";
+   bintang();
 
-    message.className =
-      "message correct";
+ }else{
 
-    document.getElementById("score").textContent = skor;
+   msg.innerHTML="😊 Tidak apa-apa, coba lagi!";
 
-    buatBintang();
+   msg.className="message wrong";
 
-  }
+   suara("Tidak apa-apa, coba lagi!");
 
-  else {
+ }
 
-    message.innerHTML =
-      "😊 Tidak apa-apa, coba lagi!";
+ document.getElementById("score").textContent=skor;
 
-    message.className =
-      "message wrong";
-
-  }
-
-
-  nextButton.classList.remove("hidden");
+ document.getElementById("next").classList.remove("hidden");
 
 }
 
 
-function buatBintang() {
+function suara(teks){
 
-  let jumlah = Math.min(5, Math.floor(skor / 20));
+ if("speechSynthesis" in window){
 
-  let hasil = "";
+   speechSynthesis.cancel();
 
-  for (let i = 0; i < 5; i++) {
+   const u=new SpeechSynthesisUtterance(teks);
 
-    hasil += i < jumlah ? "⭐" : "☆";
+   u.lang="id-ID";
+   u.rate=0.85;
+   u.pitch=1.2;
 
-  }
+   speechSynthesis.speak(u);
 
-  document.getElementById("stars").textContent = hasil;
-
-}
-
-
-function soalBerikutnya() {
-
-  if (posisi < soal.length - 1) {
-
-    posisi++;
-
-    tampilkanSoal();
-
-  }
-
-  else {
-
-    selesai();
-
-  }
+ }
 
 }
 
 
-function selesai() {
+function bintang(){
 
-  document.getElementById("question").textContent =
-    "🏆 Permainan Selesai!";
+ let jumlah=Math.min(5,Math.floor(skor/20));
 
-  document.getElementById("visual").innerHTML =
-    `<div style="font-size:80px">🎉⭐🎉</div>`;
+ let hasil="";
 
-  document.getElementById("answers").innerHTML = "";
+ for(let i=0;i<5;i++){
 
-  document.getElementById("message").innerHTML =
-    `Hebat! Anak Pintar! 🌟<br>Skor kamu: ${skor}`;
+   hasil+=i<jumlah?"⭐":"☆";
 
-  document.getElementById("message").className =
-    "message correct";
+ }
 
-  document.getElementById("nextButton").classList.add("hidden");
+ document.getElementById("stars").textContent=hasil;
 
 }
 
 
-function kembaliMenu() {
+function berikutnya(){
 
-  document.getElementById("game").classList.add("hidden");
+ if(posisi<soal.length-1){
 
-  document.getElementById("menu").classList.remove("hidden");
+   posisi++;
+
+   tampilkan();
+
+ }else{
+
+   selesai();
+
+ }
+
+}
+
+
+function selesai(){
+
+ document.getElementById("question").textContent=
+ "🏆 Permainan Selesai!";
+
+ document.getElementById("visual").innerHTML=
+ "🎉 ⭐ 🥳 ⭐ 🎉";
+
+ document.getElementById("answers").innerHTML="";
+
+ document.getElementById("message").innerHTML=
+ "Hebat! Anak Pintar! 🌟<br>Skor: "+skor;
+
+ document.getElementById("message").className=
+ "message correct";
+
+ document.getElementById("next").classList.add("hidden");
+
+ suara("Hebat! Anak Pintar! Permainan selesai!");
+
+}
+
+
+function menuUtama(){
+
+ speechSynthesis.cancel();
+
+ document.getElementById("game").classList.add("hidden");
+
+ document.getElementById("menu").classList.remove("hidden");
 
 }
 
