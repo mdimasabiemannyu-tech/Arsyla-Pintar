@@ -201,4 +201,1163 @@ body{
   min-height:120px;
   border:0;
   border-radius:23px;
-  background:#f2
+  background:#f2f4ff;
+  box-shadow:0 6px #d7dbea;
+  font-size:30px;
+  font-weight:1000;
+  padding:12px;
+}
+
+.answer.image{
+  font-size:65px;
+}
+
+.answer.number{
+  font-size:55px;
+  color:#5b4de8;
+}
+
+.answer.letter{
+  font-size:58px;
+  color:#ef5a70;
+}
+
+.answer:active{
+  transform:translateY(5px);
+  box-shadow:0 1px #d7dbea;
+}
+
+.answerLabel{
+  display:block;
+  font-size:14px;
+  color:#777;
+  margin-bottom:5px;
+}
+
+.message{
+  min-height:58px;
+  text-align:center;
+  font-size:24px;
+  font-weight:1000;
+  margin-top:14px;
+}
+
+.correct{
+  color:#12a25a;
+  animation:pop .5s;
+}
+
+.wrong{
+  color:#df5252;
+  animation:shake .4s;
+}
+
+@keyframes pop{
+  50%{transform:scale(1.15)}
+}
+
+@keyframes shake{
+  25%{transform:translateX(-10px)}
+  75%{transform:translateX(10px)}
+}
+
+.next{
+  width:100%;
+  border:0;
+  border-radius:20px;
+  background:#58d69a;
+  padding:17px;
+  font-size:21px;
+  font-weight:1000;
+  box-shadow:0 6px #3cac76;
+}
+
+.home{
+  width:100%;
+  border:0;
+  border-radius:18px;
+  background:#737cff;
+  color:#fff;
+  padding:14px;
+  margin-top:12px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+/* FINISH */
+
+.finishEmoji{
+  text-align:center;
+  font-size:90px;
+}
+
+.finishTitle{
+  text-align:center;
+  font-size:32px;
+  font-weight:1000;
+  color:#5b4de8;
+}
+
+.finalScore{
+  text-align:center;
+  font-size:28px;
+  font-weight:1000;
+  margin:15px;
+}
+
+.badge{
+  text-align:center;
+  background:#fff0a5;
+  padding:15px;
+  border-radius:20px;
+  font-size:21px;
+  font-weight:900;
+}
+
+/* CONFETTI */
+
+.confetti{
+  position:fixed;
+  top:-30px;
+  font-size:25px;
+  z-index:9999;
+  pointer-events:none;
+  animation:fall 2s linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+    opacity:0;
+  }
+}
+
+@media(max-width:430px){
+
+  .card{
+    padding:17px;
+  }
+
+  .question{
+    font-size:22px;
+  }
+
+  .visual{
+    font-size:55px;
+    min-height:130px;
+  }
+
+  .answer{
+    min-height:112px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="header">
+  <div class="logo">🌟 ARSYLA PINTAR 🌟</div>
+  <div class="tagline">
+    Belajar • Bermain • Berani Menjawab
+  </div>
+</div>
+
+
+<!-- MENU -->
+
+<div id="menu" class="card">
+
+  <div class="welcome">
+    <div class="welcomeEmoji">🧒🌈</div>
+
+    <div class="menuTitle">
+      Ayo Belajar! 🎮
+    </div>
+  </div>
+
+  <button class="menuButton angka"
+          onclick="startGame('angka')">
+    🔢 Belajar Angka
+  </button>
+
+  <button class="menuButton huruf"
+          onclick="startGame('huruf')">
+    🔤 Belajar Huruf
+  </button>
+
+  <button class="menuButton suku"
+          onclick="startGame('suku')">
+    🧩 Belajar Suku Kata
+  </button>
+
+  <button class="menuButton baca"
+          onclick="startGame('baca')">
+    📖 Belajar Membaca
+  </button>
+
+  <button class="menuButton pintar"
+          onclick="startGame('pintar')">
+    🧠 Anak Pintar
+  </button>
+
+</div>
+
+
+<!-- GAME -->
+
+<div id="game" class="card hidden">
+
+  <div class="gameTop">
+
+    <div class="topBox score">
+      ⭐ <span id="score">0</span>
+    </div>
+
+    <div class="topBox level">
+      🏆 Lv <span id="level">1</span>
+    </div>
+
+    <div class="topBox life">
+      ❤️ <span id="lives">3</span>
+    </div>
+
+  </div>
+
+
+  <div class="progress">
+    <div id="progressBar"
+         class="progressBar">
+    </div>
+  </div>
+
+
+  <div id="stars"
+       class="stars">
+    ☆☆☆☆☆
+  </div>
+
+
+  <div class="listen">
+
+    <button class="soundButton"
+            onclick="speakQuestion()">
+      🔊
+    </button>
+
+    <div class="soundText">
+      Dengarkan soal
+    </div>
+
+  </div>
+
+
+  <div id="question"
+       class="question">
+  </div>
+
+
+  <div id="visual"
+       class="visual">
+  </div>
+
+
+  <div id="answers"
+       class="answers">
+  </div>
+
+
+  <div id="message"
+       class="message">
+  </div>
+
+
+  <button id="next"
+          class="next hidden"
+          onclick="nextQuestion()">
+    ➡️ Lanjut
+  </button>
+
+
+  <button class="home"
+          onclick="goHome()">
+    🏠 Menu Utama
+  </button>
+
+</div>
+
+
+<!-- SELESAI -->
+
+<div id="finish"
+     class="card hidden">
+
+  <div class="finishEmoji">
+    🏆🎉
+  </div>
+
+  <div class="finishTitle">
+    Hebat! Anak Pintar!
+  </div>
+
+  <div class="finalScore">
+    ⭐ Skor: <span id="finalScore">0</span>
+  </div>
+
+  <div id="badge"
+       class="badge">
+  </div>
+
+  <button class="next"
+          onclick="playAgain()">
+    🔄 Main Lagi
+  </button>
+
+  <button class="home"
+          onclick="goHome()">
+    🏠 Menu Utama
+  </button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* ==========================
+   DATA ANGKA
+========================== */
+
+const angka = [
+
+{
+ question:"Ada berapa apel?",
+ visual:["🍎","🍎","🍎"],
+ answers:["1","2","3","4"],
+ correct:2,
+ type:"number"
+},
+
+{
+ question:"Ada berapa pisang?",
+ visual:["🍌","🍌"],
+ answers:["1","2","3","4"],
+ correct:1,
+ type:"number"
+},
+
+{
+ question:"Ada berapa jeruk?",
+ visual:["🍊","🍊","🍊","🍊"],
+ answers:["2","3","4","5"],
+ correct:2,
+ type:"number"
+},
+
+{
+ question:"Ada berapa stroberi?",
+ visual:["🍓","🍓","🍓","🍓","🍓"],
+ answers:["3","4","5","6"],
+ correct:2,
+ type:"number"
+},
+
+{
+ question:"Ada berapa semangka?",
+ visual:["🍉","🍉","🍉"],
+ answers:["2","3","4","5"],
+ correct:1,
+ type:"number"
+}
+
+];
+
+
+/* ==========================
+   DATA HURUF
+========================== */
+
+const huruf = [
+
+{
+ question:"Huruf apakah ini?",
+ visual:["A"],
+ answers:["A","B","C","D"],
+ correct:0,
+ type:"letter"
+},
+
+{
+ question:"Huruf apakah ini?",
+ visual:["B"],
+ answers:["A","B","C","D"],
+ correct:1,
+ type:"letter"
+},
+
+{
+ question:"Huruf apakah ini?",
+ visual:["C"],
+ answers:["A","B","C","D"],
+ correct:2,
+ type:"letter"
+},
+
+{
+ question:"Huruf apakah ini?",
+ visual:["D"],
+ answers:["A","B","C","D"],
+ correct:3,
+ type:"letter"
+},
+
+{
+ question:"Huruf apakah ini?",
+ visual:["M"],
+ answers:["M","N","O","P"],
+ correct:0,
+ type:"letter"
+}
+
+];
+
+
+/* ==========================
+   DATA SUKU KATA
+========================== */
+
+const suku = [
+
+{
+ question:"Suku kata apakah ini?",
+ visual:["BA"],
+ answers:["BA","BI","BU","BE"],
+ correct:0,
+ type:"letter"
+},
+
+{
+ question:"Suku kata apakah ini?",
+ visual:["MA"],
+ answers:["MA","MI","MU","ME"],
+ correct:0,
+ type:"letter"
+},
+
+{
+ question:"Suku kata apakah ini?",
+ visual:["BU"],
+ answers:["BA","BI","BU","BO"],
+ correct:2,
+ type:"letter"
+},
+
+{
+ question:"Suku kata apakah ini?",
+ visual:["CA"],
+ answers:["CA","CI","CU","CO"],
+ correct:0,
+ type:"letter"
+},
+
+{
+ question:"Suku kata apakah ini?",
+ visual:["MI"],
+ answers:["MA","MI","MU","MO"],
+ correct:1,
+ type:"letter"
+}
+
+];
+
+
+/* ==========================
+   DATA MEMBACA
+========================== */
+
+const baca = [
+
+{
+ question:"Gambar apakah ini?",
+ visual:["🍎"],
+ answers:["APEL","BOLA","BUKU","IKAN"],
+ correct:0,
+ type:"word"
+},
+
+{
+ question:"Gambar apakah ini?",
+ visual:["⚽"],
+ answers:["APEL","BOLA","KUCING","BUKU"],
+ correct:1,
+ type:"word"
+},
+
+{
+ question:"Gambar apakah ini?",
+ visual:["🐱"],
+ answers:["IKAN","APEL","KUCING","BOLA"],
+ correct:2,
+ type:"word"
+},
+
+{
+ question:"Gambar apakah ini?",
+ visual:["🐟"],
+ answers:["BUKU","IKAN","APEL","BOLA"],
+ correct:1,
+ type:"word"
+},
+
+{
+ question:"Gambar apakah ini?",
+ visual:["📖"],
+ answers:["BUKU","IKAN","KUCING","APEL"],
+ correct:0,
+ type:"word"
+},
+
+{
+ question:"Gambar apakah ini?",
+ visual:["🐶"],
+ answers:["ANJING","APEL","IKAN","BUKU"],
+ correct:0,
+ type:"word"
+}
+
+];
+
+
+/* ==========================
+   DATA ANAK PINTAR
+========================== */
+
+const pintar = [
+
+{
+ question:"Sikat gigi digunakan untuk apa?",
+ visual:["🪥"],
+ answers:["🪥","⚽","🛏️","🍚"],
+ correct:0,
+ type:"image"
+},
+
+{
+ question:"Mata digunakan untuk apa?",
+ visual:["👀"],
+ answers:["👀","👂","👃","🦷"],
+ correct:0,
+ type:"image"
+},
+
+{
+ question:"Telinga digunakan untuk apa?",
+ visual:["👂"],
+ answers:["👀","👂","👃","👄"],
+ correct:1,
+ type:"image"
+},
+
+{
+ question:"Kucing makan apa?",
+ visual:["🐱"],
+ answers:["🍎","🐟","🥕","🍉"],
+ correct:1,
+ type:"image"
+},
+
+{
+ question:"Kelinci suka makan apa?",
+ visual:["🐰"],
+ answers:["🍕","🥕","🍦","🍔"],
+ correct:1,
+ type:"image"
+},
+
+{
+ question:"Payung digunakan saat apa?",
+ visual:["☂️"],
+ answers:["☀️","🌧️","🍎","⚽"],
+ correct:1,
+ type:"image"
+}
+
+];
+
+
+/* ==========================
+   GAME
+========================== */
+
+const DATA = {
+ angka,
+ huruf,
+ suku,
+ baca,
+ pintar
+};
+
+let category="";
+let questions=[];
+let index=0;
+let score=0;
+let lives=3;
+let answered=false;
+
+
+/* SHUFFLE */
+
+function shuffle(arr){
+
+ return [...arr].sort(
+   ()=>Math.random()-0.5
+ );
+
+}
+
+
+/* START */
+
+function startGame(cat){
+
+ category=cat;
+
+ let source=DATA[cat];
+
+ questions=[];
+
+ while(questions.length<10){
+
+   questions=
+     questions.concat(
+       shuffle(source)
+     );
+
+ }
+
+ questions=
+   questions.slice(0,10);
+
+ index=0;
+ score=0;
+ lives=3;
+
+ document
+   .getElementById("menu")
+   .classList.add("hidden");
+
+ document
+   .getElementById("finish")
+   .classList.add("hidden");
+
+ document
+   .getElementById("game")
+   .classList.remove("hidden");
+
+ updateTop();
+
+ showQuestion();
+
+}
+
+
+/* SHOW */
+
+function showQuestion(){
+
+ answered=false;
+
+ const q=
+   questions[index];
+
+
+ document
+   .getElementById("question")
+   .textContent=
+   q.question;
+
+
+ /* VISUAL */
+
+ const visual=
+   document.getElementById("visual");
+
+ visual.innerHTML="";
+
+
+ q.visual.forEach(item=>{
+
+   const span=
+     document.createElement("span");
+
+   if(q.type==="number" &&
+      q.visual.length>1){
+
+     span.className="countObject";
+
+   }else{
+
+     span.className=
+       q.type==="word"
+       ?"wordPicture"
+       :"bigText";
+
+   }
+
+   span.textContent=item;
+
+   visual.appendChild(span);
+
+ });
+
+
+ /* ANSWERS */
+
+ const container=
+   document.getElementById("answers");
+
+ container.innerHTML="";
+
+
+ let options=q.answers.map(
+   (answer,i)=>({
+
+     value:answer,
+
+     correct:i===q.correct
+
+   })
+ );
+
+
+ options=shuffle(options);
+
+
+ options.forEach(option=>{
+
+   const button=
+     document.createElement("button");
+
+   button.className="answer";
+
+
+   if(q.type==="number"){
+
+     button.classList.add("number");
+
+   }
+
+   if(q.type==="letter"){
+
+     button.classList.add("letter");
+
+   }
+
+   if(q.type==="image"){
+
+     button.classList.add("image");
+
+   }
+
+
+   if(q.type==="word"){
+
+     button.innerHTML=
+       `<span class="answerLabel">
+          PILIH
+        </span>
+        ${option.value}`;
+
+   }else{
+
+     button.textContent=
+       option.value;
+
+   }
+
+
+   button.onclick=
+     ()=>checkAnswer(option.correct);
+
+
+   container.appendChild(button);
+
+ });
+
+
+ document
+   .getElementById("message")
+   .textContent="";
+
+
+ document
+   .getElementById("message")
+   .className="message";
+
+
+ document
+   .getElementById("next")
+   .classList.add("hidden");
+
+
+ updateProgress();
+
+
+ /* suara soal */
+
+ setTimeout(
+   speakQuestion,
+   500
+ );
+
+}
+
+
+/* SPEAK */
+
+function speakText(text){
+
+ if(!("speechSynthesis" in window))
+   return;
+
+ speechSynthesis.cancel();
+
+ const u=
+   new SpeechSynthesisUtterance(text);
+
+ u.lang="id-ID";
+ u.rate=.82;
+ u.pitch=1.15;
+ u.volume=1;
+
+ speechSynthesis.speak(u);
+
+}
+
+
+/* QUESTION VOICE */
+
+function speakQuestion(){
+
+ if(!questions[index])
+   return;
+
+ speakText(
+   questions[index].question
+ );
+
+}
+
+
+/* CHECK */
+
+function checkAnswer(correct){
+
+ if(answered)
+   return;
+
+ answered=true;
+
+ const message=
+   document.getElementById("message");
+
+
+ if(correct){
+
+   score+=10;
+
+   message.innerHTML=
+     "🎉 Hebat! Anak Pintar! ⭐";
+
+   message.className=
+     "message correct";
+
+   speakText(
+     "Hebat! Anak Pintar!"
+   );
+
+   confetti();
+
+ }else{
+
+   lives--;
+
+   message.innerHTML=
+     "😊 Tidak apa-apa, coba lagi!";
+
+   message.className=
+     "message wrong";
+
+   speakText(
+     "Tidak apa-apa, coba lagi!"
+   );
+
+ }
+
+
+ updateTop();
+
+
+ document
+   .getElementById("next")
+   .classList.remove("hidden");
+
+
+ if(lives<=0){
+
+   setTimeout(
+     finishGame,
+     1200
+   );
+
+ }
+
+}
+
+
+/* NEXT */
+
+function nextQuestion(){
+
+ if(lives<=0){
+
+   finishGame();
+
+   return;
+
+ }
+
+
+ if(index<questions.length-1){
+
+   index++;
+
+   showQuestion();
+
+ }else{
+
+   finishGame();
+
+ }
+
+}
+
+
+/* UPDATE TOP */
+
+function updateTop(){
+
+ document
+   .getElementById("score")
+   .textContent=score;
+
+
+ document
+   .getElementById("lives")
+   .textContent=lives;
+
+
+ let level=
+   Math.floor(score/50)+1;
+
+
+ if(level>10)
+   level=10;
+
+
+ document
+   .getElementById("level")
+   .textContent=level;
+
+
+ let stars=
+   Math.min(
+     5,
+     Math.floor(score/20)
+   );
+
+
+ let text="";
+
+ for(let i=0;i<5;i++){
+
+   text+=
+     i<stars
+     ?"⭐"
+     :"☆";
+
+ }
+
+ document
+   .getElementById("stars")
+   .textContent=text;
+
+}
+
+
+/* PROGRESS */
+
+function updateProgress(){
+
+ let percent=
+   ((index+1)/questions.length)*100;
+
+ document
+   .getElementById("progressBar")
+   .style.width=
+   percent+"%";
+
+}
+
+
+/* CONFETTI */
+
+function confetti(){
+
+ const emojis=[
+   "🎉","⭐","🌟",
+   "✨","🎈","🥳"
+ ];
+
+ for(let i=0;i<20;i++){
+
+   const e=
+     document.createElement("div");
+
+   e.className="confetti";
+
+   e.textContent=
+     emojis[
+       Math.floor(
+         Math.random()*emojis.length
+       )
+     ];
+
+   e.style.left=
+     Math.random()*100+"vw";
+
+   e.style.animationDelay=
+     Math.random()*.5+"s";
+
+   document.body.appendChild(e);
+
+   setTimeout(
+     ()=>e.remove(),
+     2300
+   );
+
+ }
+
+}
+
+
+/* FINISH */
+
+function finishGame(){
+
+ if("speechSynthesis" in window)
+   speechSynthesis.cancel();
+
+
+ document
+   .getElementById("game")
+   .classList.add("hidden");
+
+
+ document
+   .getElementById("finish")
+   .classList.remove("hidden");
+
+
+ document
+   .getElementById("finalScore")
+   .textContent=score;
+
+
+ let badge="";
+
+
+ if(score>=90){
+
+   badge=
+     "🏆 SUPER ANAK PINTAR! 🌟";
+
+ }else if(score>=70){
+
+   badge=
+     "🥇 HEBAT SEKALI! ⭐";
+
+ }else if(score>=50){
+
+   badge=
+     "🥈 TERUS BELAJAR! 🌈";
+
+ }else{
+
+   badge=
+     "🌱 AYO COBA LAGI! ❤️";
+
+ }
+
+
+ document
+   .getElementById("badge")
+   .textContent=badge;
+
+
+ speakText(
+   "Hebat! Anak Pintar! " +
+   "Permainan selesai!"
+ );
+
+
+ confetti();
+
+}
+
+
+/* AGAIN */
+
+function playAgain(){
+
+ document
+   .getElementById("finish")
+   .classList.add("hidden");
+
+ startGame(category);
+
+}
+
+
+/* HOME */
+
+function goHome(){
+
+ if("speechSynthesis" in window)
+   speechSynthesis.cancel();
+
+
+ document
+   .getElementById("game")
+   .classList.add("hidden");
+
+
+ document
+   .getElementById("finish")
+   .classList.add("hidden");
+
+
+ document
+   .getElementById("menu")
+   .classList.remove("hidden");
+
+}
+
+</script>
+
+</body>
+</html>
